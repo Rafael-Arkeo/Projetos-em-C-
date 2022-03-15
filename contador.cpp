@@ -1,8 +1,11 @@
 #include <iostream>
 #include <stdlib.h>
 #include <unistd.h>
+#include <windows.h>
+
 
 using namespace std;
+
 
 class Contador{
 
@@ -46,30 +49,30 @@ void Contador::adicionar()
     {
         conte++;
     }
-    else
-    {
-
-       if(conta<9)
-       {
-            conta++;
-            conte = conte -9;
-       }
-       else
-       {
-            if(cont<9)
-            {
-                cont++;
-                conta = conta -9;
-            }
-       }
-    }
+    if(conte == 9)
+	{
+		if(conta<9)
+		{
+			conte = 0;
+			conta++;
+		}
+		if (conta == 9)
+		{
+			if (cont < 9)
+			{
+				conta = 0;
+				conte = 0;
+				cont ++;
+			}
+		}
+	}
 }
 
 
 
 int main()
 {
-    Contador contador = Contador(0,0,0);
+    Contador contador = Contador(9,9,0);
 
     int opcao = 1;
 
@@ -78,22 +81,22 @@ int main()
     {
 
         contador.mostracontador();
-        printf("[0]->sair\n[1]->adcionar:");
-        scanf("%d",&opcao);
+        cout << "Digite [0] para sair ou [1] para adcionar"<< endl;
+        cin >> opcao;
 
         if(opcao != 1 && opcao != 0)
         {
 
-            printf("Digite uma opção válida![0 ou 1]\n");
-            sleep(3);
-            system("clear");
+            cout << "Digite uma opção válida [0 ou 1]"<< endl;
+            Sleep(300);
+            system("cls");
 
         }
         else if(opcao == 1)
         {
 
-             contador.adicionar();
-            system("clear");
+            contador.adicionar();
+            system("cls");
         }
 
 
