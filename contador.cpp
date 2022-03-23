@@ -105,11 +105,41 @@ void Contador:: zerar()
 void Contador::instanciar_num()
 {
 	 cout << "Escolha o número da primeira casa" << endl;
-     cin >> cont;
+     do
+	 {
+	  	 cout << "Digite um número entre 1 e 9:" << endl;
+	  	 cin >> cont;
+	  	 if(cont < 1 || cont > 9)
+		   {
+		   	cout << "Digite uma entrada válida!" << endl;
+		   	Sleep(3000);
+		   	system("cls");
+		   }
+	 } while(cont < 1 || cont > 9);
      cout << "Escolha o número da segunda casa" << endl;
-     cin >> conta;
+     do
+	 {
+	  	 cout << "Digite um número entre 1 e 9:" << endl;
+	  	 cin >> conta;
+	  	 if(conta < 1 || conta > 9)
+		   {
+		   	cout << "Digite uma entrada válida!" << endl;
+		   	Sleep(3000);
+		   	system("cls");
+		   }
+	 } while(conta < 1 || conta > 9);
      cout << "Escolha o número da terceira casa" << endl;
-     cin >> conte;
+     do
+	 {
+	  	 cout << "Digite um número entre 1 e 9:" << endl;
+	  	 cin >> conte;
+	  	 if(conte < 1 || conte > 9)
+		   {
+		   	cout << "Digite uma entrada válida!" << endl;
+		   	Sleep(3000);
+		   	system("cls");
+		   }
+	 } while(conte < 1 || conte > 9);
 }
 int main()
 {
