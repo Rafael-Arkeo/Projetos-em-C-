@@ -20,7 +20,8 @@ class Contador{
         void mostracontador();
         void adicionar();
         void subtrair();
-        void encerar(int num);
+        void zerar();
+        void instanciar_num();
 
         Contador(int _cont, int _conta, int _conte);
 
@@ -47,32 +48,72 @@ void Contador::adicionar()
 {
     if(conte<9)
     {
-        conte++;
+        conte+=1;
     }
-    if(conte == 9)
+    else
 	{
 		if(conta<9)
 		{
 			conte = 0;
-			conta++;
+			conta+=1;
 		}
-		if (conta == 9)
+		else
 		{
 			if (cont < 9)
 			{
 				conta = 0;
 				conte = 0;
-				cont ++;
+				cont +=1;
 			}
 		}
 	}
 }
 
 
+void Contador:: subtrair()
+{ 
+	if(conte == 0)
+	{
+		if(conta > 0)
+		{
+			conta -= 1;
+			conte = 9;
+		}
+		else
+		{
+			if(cont > 0)
+			{
+				cont -= 1;
+				conta = 9;
+				conte = 9;
+			}
+		}
+		
+	}
+	else
+	{
+		conte -= 1;
+	}
+	
+}
 
+void Contador:: zerar()
+{
+	cont = conta = conte = 0;
+}
+
+void Contador::instanciar_num()
+{
+	 cout << "Escolha o número da primeira casa" << endl;
+     cin >> cont;
+     cout << "Escolha o número da segunda casa" << endl;
+     cin >> conta;
+     cout << "Escolha o número da terceira casa" << endl;
+     cin >> conte;
+}
 int main()
 {
-    Contador contador = Contador(9,9,0);
+    Contador contador = Contador(0,9,0);
 
     int opcao = 1;
 
@@ -80,24 +121,37 @@ int main()
     while(opcao != 0)
     {
 
-        contador.mostracontador();
-        cout << "Digite [0] para sair ou [1] para adcionar"<< endl;
+        contador.mostracontador(); 
+        cout<<"Digite [0] para sair [1] para adcionar [2] para subtrair"<< endl;
+        cout <<" [3] para zerar o contador ou [4] para escolher um número"<< endl;
         cin >> opcao;
 
-        if(opcao != 1 && opcao != 0)
-        {
+        switch(opcao)
+		{
+		case 0:
+			break;
+		case 1:
+			contador.adicionar();
+			system("cls");
+			break;
+		case 2:
+			contador.subtrair();
+			system("cls");
+			break;
+		case 3:
+			contador.zerar();
+			system("cls");
+			break;
+		case 4:
+			contador.instanciar_num();
+			system("cls");
+			break;	
 
-            cout << "Digite uma opÃ§Ã£o vÃ¡lida [0 ou 1]"<< endl;
-            Sleep(300);
-            system("cls");
-
-        }
-        else if(opcao == 1)
-        {
-
-            contador.adicionar();
-            system("cls");
-        }
+		default:
+			cout << "Digite uma opção válida!" << endl;
+			Sleep(3000);
+			system("cls");
+		}
 
 
 
